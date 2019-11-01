@@ -22,7 +22,10 @@ BuildRequires:	python-setuptools >= 31.0.1
 BuildRequires:	python-setuptools_scm >= 1.15.0
 %if %{with tests}
 BuildRequires:	python-contextlib2
+BuildRequires:	python-linecache2
 BuildRequires:	python-more_itertools
+BuildRequires:	python-pathlib2
+BuildRequires:	python-traceback2
 BuildRequires:	python-unittest2
 %endif
 %endif
