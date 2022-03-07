@@ -8,13 +8,14 @@
 Summary:	pathlib-compatible Zipfile object wrapper
 Summary(pl.UTF-8):	Obiektowe obudowanie Zipfile zgodne z pathlib
 Name:		python-zipp
-Version:	1.0.0
-Release:	2
+# keep 1.x here for python2 support
+Version:	1.2.0
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/zipp/
 Source0:	https://files.pythonhosted.org/packages/source/z/zipp/zipp-%{version}.tar.gz
-# Source0-md5:	49b29a0469c1af728fdf681187fb3a5e
+# Source0-md5:	c25d36db01d011eb2067c722cbd56279
 URL:		https://pypi.org/project/zipp/
 %if %{with python2}
 BuildRequires:	python-modules >= 1:2.7
@@ -22,8 +23,9 @@ BuildRequires:	python-setuptools >= 1:31.0.1
 BuildRequires:	python-setuptools_scm >= 1.15.0
 %if %{with tests}
 BuildRequires:	python-contextlib2
+BuildRequires:	python-func_timeout
+BuildRequires:	python-jaraco.itertools
 BuildRequires:	python-linecache2
-BuildRequires:	python-more_itertools
 BuildRequires:	python-pathlib2
 BuildRequires:	python-traceback2
 BuildRequires:	python-unittest2
@@ -34,15 +36,16 @@ BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	python3-setuptools >= 1:31.0.1
 BuildRequires:	python3-setuptools_scm >= 1.15.0
 %if %{with tests}
-BuildRequires:	python3-more_itertools
+BuildRequires:	python3-func_timeout
+BuildRequires:	python3-jaraco.itertools
 %endif
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
-BuildRequires:	python3-jaraco.packaging >= 3.2
-BuildRequires:	python3-rst.linker >= 1.9
-BuildRequires:	sphinx-pdg-3
+BuildRequires:	python-jaraco.packaging >= 3.2
+BuildRequires:	python-rst.linker >= 1.9
+BuildRequires:	sphinx-pdg-2
 %endif
 Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
@@ -102,7 +105,7 @@ Dokumentacja API modułu Pythona zipp.
 %endif
 
 %if %{with doc}
-sphinx-build-3 -b html docs docs/_build/html
+sphinx-build-2 -b html docs docs/_build/html
 %endif
 
 %install
