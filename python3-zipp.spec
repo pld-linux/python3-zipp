@@ -19,12 +19,12 @@ BuildRequires:	python3-setuptools >= 1:56
 BuildRequires:	python3-setuptools_scm >= 3.4.1
 BuildRequires:	python3-toml
 %if %{with tests}
-#BuildRequires:	python3-checkdocs >= 2.4
 #BuildRequires:	python3-cov
 BuildRequires:	python3-func_timeout
 BuildRequires:	python3-jaraco.itertools
 BuildRequires:	python3-pytest >= 6
 #BuildRequires:	python3-pytest-black >= 0.3.7
+#BuildRequires:	python3-pytest-checkdocs >= 2.4
 #BuildRequires:	python3-pytest-enabler >= 1.3
 #BuildRequires:	python3-pytest-flake8
 #BuildRequires:	python3-pytest-mypy >= 0.9.1
