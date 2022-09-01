@@ -6,26 +6,34 @@
 Summary:	pathlib-compatible Zipfile object wrapper
 Summary(pl.UTF-8):	Obiektowe obudowanie Zipfile zgodne z pathlib
 Name:		python3-zipp
-Version:	3.7.0
-Release:	4
+Version:	3.8.1
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/zipp/
 Source0:	https://files.pythonhosted.org/packages/source/z/zipp/zipp-%{version}.tar.gz
-# Source0-md5:	5a1fc692b57b348d1e259484b405ddf6
+# Source0-md5:	6f15c3e3c78919f8936749b0033e0cea
 URL:		https://pypi.org/project/zipp/
 BuildRequires:	python3-modules >= 1:3.7
-BuildRequires:	python3-setuptools >= 1:31.0.1
+BuildRequires:	python3-setuptools >= 1:56
 BuildRequires:	python3-setuptools_scm >= 3.4.1
 BuildRequires:	python3-toml
 %if %{with tests}
+#BuildRequires:	python3-checkdocs >= 2.4
+#BuildRequires:	python3-cov
 BuildRequires:	python3-func_timeout
 BuildRequires:	python3-jaraco.itertools
+BuildRequires:	python3-pytest >= 6
+#BuildRequires:	python3-pytest-black >= 0.3.7
+#BuildRequires:	python3-pytest-enabler >= 1.3
+#BuildRequires:	python3-pytest-flake8
+#BuildRequires:	python3-pytest-mypy >= 0.9.1
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
-BuildRequires:	python3-jaraco.packaging >= 8.2
+BuildRequires:	python3-jaraco.packaging >= 9
+BuildRequires:	python3-jaraco.tidelift >= 1.4
 BuildRequires:	python3-rst.linker >= 1.9
 BuildRequires:	sphinx-pdg-3
 %endif
@@ -54,6 +62,12 @@ Dokumentacja API modułu Pythona zipp.
 
 %prep
 %setup -q -n zipp-%{version}
+
+# setuptools stub
+cat >setup.py <<EOF
+from setuptools import setup
+setup()
+EOF
 
 %build
 %py3_build
