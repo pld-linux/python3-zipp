@@ -7,7 +7,7 @@ Summary:	pathlib-compatible Zipfile object wrapper
 Summary(pl.UTF-8):	Obiektowe obudowanie Zipfile zgodne z pathlib
 Name:		python3-zipp
 Version:	3.17.0
-Release:	3
+Release:	4
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/zipp/
