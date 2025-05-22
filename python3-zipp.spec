@@ -27,6 +27,7 @@ BuildRequires:	python3-toml
 BuildRequires:	python3-func_timeout
 BuildRequires:	python3-jaraco.functools
 BuildRequires:	python3-jaraco.itertools
+BuildRequires:	python3-jaraco.test
 BuildRequires:	python3-more_itertools
 BuildRequires:	python3-pytest >= 6
 #BuildRequires:	python3-pytest-black >= 0.3.7
@@ -36,6 +37,7 @@ BuildRequires:	python3-pytest >= 6
 #BuildRequires:	python3-pytest-ignore-flaky
 #BuildRequires:	python3-pytest-mypy >= 0.9.1
 #BuildRequires:	python3-pytest-ruff
+BuildRequires:	python3-test >= 1:3.9
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.044
