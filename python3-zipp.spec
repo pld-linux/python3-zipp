@@ -6,16 +6,18 @@
 Summary:	pathlib-compatible Zipfile object wrapper
 Summary(pl.UTF-8):	Obiektowe obudowanie Zipfile zgodne z pathlib
 Name:		python3-zipp
-Version:	3.17.0
-Release:	4
+Version:	3.21.0
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/zipp/
 Source0:	https://files.pythonhosted.org/packages/source/z/zipp/zipp-%{version}.tar.gz
-# Source0-md5:	a4cf8c530da863c27a04251724436681
+# Source0-md5:	a758089a5cbb8fab61d73c8ff345eee2
 URL:		https://pypi.org/project/zipp/
-BuildRequires:	python3-modules >= 1:3.8
-BuildRequires:	python3-setuptools >= 1:56
+BuildRequires:	python3-build
+BuildRequires:	python3-installer
+BuildRequires:	python3-modules >= 1:3.9
+BuildRequires:	python3-setuptools >= 1:61.2
 BuildRequires:	python3-setuptools_scm >= 3.4.1
 BuildRequires:	python3-toml
 %if %{with tests}
@@ -36,7 +38,7 @@ BuildRequires:	python3-pytest >= 6
 #BuildRequires:	python3-pytest-ruff
 %endif
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.714
+BuildRequires:	rpmbuild(macros) >= 2.044
 %if %{with doc}
 BuildRequires:	python3-furo
 BuildRequires:	python3-jaraco.packaging >= 9.3
@@ -45,7 +47,7 @@ BuildRequires:	python3-rst.linker >= 1.9
 #BuildRequires:	python3-sphinx-lint
 BuildRequires:	sphinx-pdg-3 >= 3.5
 %endif
-Requires:	python3-modules >= 1:3.8
+Requires:	python3-modules >= 1:3.9
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -71,14 +73,8 @@ Dokumentacja API modułu Pythona zipp.
 %prep
 %setup -q -n zipp-%{version}
 
-# setuptools stub
-cat >setup.py <<EOF
-from setuptools import setup
-setup()
-EOF
-
 %build
-%py3_build
+%py3_build_pyproject
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
@@ -92,7 +88,7 @@ sphinx-build-3 -b html docs docs/_build/html
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
+%py3_install_pyproject
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -101,7 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE NEWS.rst README.rst SECURITY.md
 %{py3_sitescriptdir}/zipp
-%{py3_sitescriptdir}/zipp-%{version}-py*.egg-info
+%{py3_sitescriptdir}/zipp-%{version}.dist-info
 
 %if %{with doc}
 %files apidocs
