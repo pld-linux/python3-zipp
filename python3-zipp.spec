@@ -6,37 +6,35 @@
 Summary:	pathlib-compatible Zipfile object wrapper
 Summary(pl.UTF-8):	Obiektowe obudowanie Zipfile zgodne z pathlib
 Name:		python3-zipp
-Version:	3.21.0
+Version:	3.23.0
 Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/zipp/
 Source0:	https://files.pythonhosted.org/packages/source/z/zipp/zipp-%{version}.tar.gz
-# Source0-md5:	a758089a5cbb8fab61d73c8ff345eee2
+# Source0-md5:	7565b42f396db31df7e4b3eceff223ad
 URL:		https://pypi.org/project/zipp/
 BuildRequires:	python3-build
+BuildRequires:	python3-coherent.licensed
 BuildRequires:	python3-installer
 BuildRequires:	python3-modules >= 1:3.9
-BuildRequires:	python3-setuptools >= 1:61.2
+BuildRequires:	python3-setuptools >= 1:77
 BuildRequires:	python3-setuptools_scm >= 3.4.1
-BuildRequires:	python3-toml
 %if %{with tests}
 # optional
 #BuildRequires:	python3-big_o
-#BuildRequires:	python3-cov
-BuildRequires:	python3-func_timeout
 BuildRequires:	python3-jaraco.functools
 BuildRequires:	python3-jaraco.itertools
 BuildRequires:	python3-jaraco.test
 BuildRequires:	python3-more_itertools
 BuildRequires:	python3-pytest >= 6
-#BuildRequires:	python3-pytest-black >= 0.3.7
+# lint only
 #BuildRequires:	python3-pytest-checkdocs >= 2.4
+#BuildRequires:	python3-pytest-cov
 #BuildRequires:	python3-pytest-enabler >= 2.2
-#BuildRequires:	python3-pytest-flake8
 #BuildRequires:	python3-pytest-ignore-flaky
 #BuildRequires:	python3-pytest-mypy >= 0.9.1
-#BuildRequires:	python3-pytest-ruff
+#BuildRequires:	python3-pytest-ruff >= 0.2.1
 BuildRequires:	python3-test >= 1:3.9
 %endif
 BuildRequires:	rpm-pythonprov
